@@ -6,9 +6,8 @@ from .models import Transport
 
 class AdminTransport(admin.ModelAdmin):
     fields = ['name', 'vin', 'add_date']
+    list_display = ['name', 'vin', 'add_date']
     readonly_fields = ['add_date']
-
-
 
 
 admin.site.register(Transport, AdminTransport)
