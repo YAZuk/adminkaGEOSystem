@@ -1,13 +1,17 @@
 from django.contrib import admin
 from .models import Transport, Company, Device
+from django.utils.safestring import mark_safe
 
 
 # Register your models here.
 
 class AdminTransport(admin.ModelAdmin):
-    fields = ['name', 'vin', 'company', 'device', 'add_date']
+    fields = ['name', 'vin', 'company', 'device', 'add_date', 'transport_img']
     list_display = ['name', 'vin', 'company', 'device', 'add_date']
-    readonly_fields = ['add_date']
+    readonly_fields = ['add_date', 'preview']
+
+    def preview(self, obj):
+        return mark_safe(f'<img src="{obj.image.url}">')
 
 
 class AdminCompany(admin.ModelAdmin):
@@ -17,7 +21,7 @@ class AdminCompany(admin.ModelAdmin):
 
 
 class AdminDevice(admin.ModelAdmin):
-    fields = ['imei', 'name', 'company', 'device', 'add_date']
+    fields = ['imei', 'name', 'add_date']
     list_display = ['imei', 'name', 'add_date']
     readonly_fields = ['add_date']
 

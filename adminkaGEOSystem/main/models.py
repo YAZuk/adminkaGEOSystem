@@ -36,6 +36,7 @@ class Transport(models.Model):
     name = models.CharField(max_length=1024, default="")
     vin = models.CharField(max_length=1024, default="")
     add_date = models.DateTimeField(auto_now_add=True)
+    transport_img = models.ImageField(upload_to='')
     company = models.ForeignKey(Company, on_delete=models.CASCADE)
     device = models.ForeignKey(Device, on_delete=models.CASCADE)
 
@@ -46,3 +47,10 @@ class Transport(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Act(models.Model):
+    id = models.AutoField(primary_key=True)
+    executor = models.CharField(max_length=1024, default="")
+    description = models.CharField(max_length=1024, default="")
+    transport = models.ForeignKey(Transport, on_delete=models.CASCADE)
