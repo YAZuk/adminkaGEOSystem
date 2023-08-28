@@ -36,7 +36,7 @@ class Transport(models.Model):
     name = models.CharField(max_length=1024, default="", verbose_name=u"Название")
     vin = models.CharField(max_length=1024, default="", blank=True, null=True, verbose_name=u"VIN номер")
     add_date = models.DateTimeField(auto_now_add=True, verbose_name=u"Дата и время создания")
-    transport_img = models.ImageField(upload_to='', default="", blank=True, null=True, verbose_name=u"Изображение")
+    transport_img = models.ImageField(upload_to="static/", default="", blank=True, null=True, verbose_name=u"Изображение")
     company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name=u"Компания")
     device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name=u"Устройство")
 
@@ -55,6 +55,7 @@ class Act(models.Model):
     # description = models.CharField(max_length=1024, default="", verbose_name=u"Описание работ")
     description = models.TextField(max_length=4095, default="", verbose_name=u"Описание работ")
     transport = models.ForeignKey(Transport, on_delete=models.CASCADE, verbose_name=u"Транспорт")
+    add_date = models.DateTimeField(verbose_name=u"Дата и время создания")
 
     class Meta:
         verbose_name_plural = u"Акты"

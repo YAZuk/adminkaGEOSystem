@@ -6,8 +6,8 @@ from django.utils.safestring import mark_safe
 # Register your models here.
 
 class AdminAct(admin.ModelAdmin):
-    fields = ['executor', 'description', 'transport']
-    list_display = ['executor', 'description', 'transport']
+    fields = ['executor', 'description', 'transport', 'add_date']
+    list_display = ['executor', 'description', 'transport', 'add_date']
     # readonly_fields = ['add_date']
 
 
