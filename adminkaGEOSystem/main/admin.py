@@ -15,6 +15,7 @@ class AdminTransport(admin.ModelAdmin):
     fields = ['name', 'vin', 'company', 'device', 'add_date', 'transport_img']
     list_display = ['name', 'vin', 'company', 'device', 'add_date']
     readonly_fields = ['add_date', 'preview']
+    search_fields = ['name', 'vin', ]
 
     def preview(self, obj):
         return mark_safe(f'<img src="{obj.image.url}">')
