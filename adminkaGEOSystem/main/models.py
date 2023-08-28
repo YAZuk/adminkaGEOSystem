@@ -34,9 +34,9 @@ class Company(models.Model):
 class Transport(models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(max_length=1024, default="", verbose_name=u"Название")
-    vin = models.CharField(max_length=1024, default="", verbose_name=u"VIN номер")
+    vin = models.CharField(max_length=1024, default="", blank=True, null=True, verbose_name=u"VIN номер")
     add_date = models.DateTimeField(auto_now_add=True, verbose_name=u"Дата и время создания")
-    transport_img = models.ImageField(upload_to='', verbose_name=u"Изображение")
+    transport_img = models.ImageField(upload_to='', default="", blank=True, null=True, verbose_name=u"Изображение")
     company = models.ForeignKey(Company, on_delete=models.CASCADE, verbose_name=u"Компания")
     device = models.ForeignKey(Device, on_delete=models.CASCADE, verbose_name=u"Устройство")
 
