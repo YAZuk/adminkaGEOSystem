@@ -1,9 +1,15 @@
 from django.contrib import admin
-from .models import Transport, Company, Device
+from .models import Transport, Company, Device, Act
 from django.utils.safestring import mark_safe
 
 
 # Register your models here.
+
+class AdminAct(admin.ModelAdmin):
+    fields = ['executor', 'description', 'transport']
+    list_display = ['executor', 'description', 'transport']
+    # readonly_fields = ['add_date']
+
 
 class AdminTransport(admin.ModelAdmin):
     fields = ['name', 'vin', 'company', 'device', 'add_date', 'transport_img']
@@ -29,3 +35,4 @@ class AdminDevice(admin.ModelAdmin):
 admin.site.register(Transport, AdminTransport)
 admin.site.register(Company, AdminCompany)
 admin.site.register(Device, AdminDevice)
+admin.site.register(Act, AdminAct)
